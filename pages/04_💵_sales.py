@@ -26,3 +26,14 @@ df7 = df_date.groupby(['Quarter','Month'])['Sales'].sum().reset_index(name='Sale
 chart_7 = px.bar(df7, x='Sales of Orders', y='Quarter', color='Month')
 st.write(chart_7)
 st.write('Sales of Orders are highest in Q1 and Q3')
+
+
+#Sale per Quarter
+st.title('Monthly sale deviation with respect to the average')
+df7 = df_date.groupby(['Month'])['Sales'].sum().reset_index(name='Sales of Orders').sort_values(by='Month', ascending=True)
+avg = df7['Sales of Orders'].mean()
+percent_sale = ((df7[['Sales of Orders']]-avg)/avg)*100
+df7['Percent_sale'] = percent_sale
+df7[['Month']] = df7[['Month']].apply(pd.to_numeric)
+chart_7 = px.bar(df7, x='Month', y='Percent_sale',color='Percent_sale')
+st.write(chart_7)

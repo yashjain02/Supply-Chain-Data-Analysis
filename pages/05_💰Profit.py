@@ -8,6 +8,6 @@ options1 = st.selectbox('Select option below',['Category Name','Order Region'],k
 
 loss = df1[(df1['Benefit per order']>0)]
 fug5=loss[options1].value_counts().nlargest(10)
-fig5=px.bar(fug5, title="Products with most Profit")
+fig5=px.bar(fug5)
 st.plotly_chart(fig5)
 
