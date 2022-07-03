@@ -6,7 +6,7 @@ df1 = pd.read_csv('dataset/DataCoSupplyChainDataset.csv',encoding='ISO-8859-1')
 
 
 st.title('Profit by Country')
-df5 = df1.groupby([ 'Order Country', 'Order City'])['Order Profit Per Order'].sum().reset_index(name='Profit of Orders').sort_values(by= 'Profit of Orders', ascending= False)
+df5 = df1.groupby([ 'Order Country', 'Order City'])['Order Profit Per Order'].sum().reset_index(name='Profit of Orders').sort_values(by= 'Profit of Orders', ascending= True)
 chart_5 = px.choropleth(df5,locationmode='country names', locations='Order Country',
                     color='Profit of Orders',
                     hover_name='Order Country',
