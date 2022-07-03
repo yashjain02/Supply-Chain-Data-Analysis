@@ -12,8 +12,11 @@ chart_5 = px.choropleth(df5,locationmode='country names', locations='Order Count
                     hover_name='Order Country',
                     color_continuous_scale=px.colors.sequential.Plasma)
 st.write(chart_5)
-
-data2=df1[df1['Order Status']=='SUSPECTED_FRAUD']
+st.write('Profits mainly come from countries such as Indonesia, Australia, Argentina, Nicaragua, and Honduras.')
+st.title('Countries with highest Fraud')
+data2=df1[df1['Order Status'] == 'SUSPECTED_FRAUD']
 data2=data2['Order Country'].value_counts().nlargest(10)
-fig4=px.bar(data2, title="Countries with highest Fraud")
+fig4=px.bar(data2,y='Order Country')
 st.plotly_chart(fig4)
+st.write('Customer from united states are tend to do fraud transaction')
+
